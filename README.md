@@ -4,7 +4,7 @@
 [![version](https://img.shields.io/badge/version-0.1.0-blue)](#)
 [![Twitter](https://img.shields.io/twitter/url/https/twitter.com/cloudposse.svg?style=social&label=Follow%20%40vlepineadm)](https://twitter.com/vlepineadm)
 [![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
-[![Website perso.crans.org](https://img.shields.io/website-up-down-green-red/http/perso.crans.org.svg)](https://blog.labvl.net/)
+[![Website perso.crans.org](https://img.shields.io/website-up-down-green-red/http/perso.crans.org.svg)](https://blog.fr.labvl.net/)
 [![made-for-VSCode](https://img.shields.io/badge/Made%20for-VSCode-1f425f.svg)](https://code.visualstudio.com/)
 ![Profile views](https://gpvc.arturio.dev/vlepineadm)
 [![Jekyll](https://img.shields.io/badge/built%20for-Jekyll-red.svg)](https://jekyllrb.com/)
