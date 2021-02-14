@@ -21,10 +21,9 @@ Theme: Minimal Mistakes
 
 [![Github all releases](https://img.shields.io/github/downloads/Naereen/StrapDown.js/total.svg)](https://GitHub.com/vlepineadm/StrapDown.js/releases/)
 
+[![GitHub issues](https://img.shields.io/github/issues/vlepineadm/StrapDown.js.svg)](https://GitHub.com/vlepineadm/StrapDown.js/issues/)
 
-[![GitHub issues](https://img.shields.io/github/issues/Naereen/StrapDown.js.svg)](https://GitHub.com/vlepineadm/StrapDown.js/issues/)
-
-[![GitHub pull-requests](https://img.shields.io/github/issues-pr/Naereen/StrapDown.js.svg)](https://GitHub.com/vlepineadm/StrapDown.js/pull/)
+[![GitHub pull-requests](https://img.shields.io/github/issues-pr/vlepineadm/StrapDown.js.svg)](https://GitHub.com/vlepineadm/StrapDown.js/pull/)
 
 [![Only 32 Kb](https://badge-size.herokuapp.com/Naereen/StrapDown.js/master/strapdown.min.js)](https://GitHub.com/vlepineadm/StrapDown.js/blob/master/strapdown.min.js)
 

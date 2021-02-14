@@ -1,6 +1,6 @@
 # uncomment the line below. To upgrade, run `bundle update github-pages`.
 # gem "github-pages", group: :jekyll_plugins
-gem 'coderay', '~> 1.1.0'
+#gem 'coderay', '~> 1.1.0'
 
 # If you have any plugins, put them here!
 group :jekyll_plugins do
