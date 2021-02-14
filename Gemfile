@@ -4,14 +4,14 @@
 
 # If you have any plugins, put them here!
 group :jekyll_plugins do
-  gem "jekyll", ">= 3.7", "< 5.0"
-  gem "jekyll-paginate", "~> 1.1"
-  gem "jekyll-sitemap", "~> 1.3"
-  gem "jekyll-gist", "~> 1.5"
-  gem "jekyll-feed", "~> 0.1"
-  gem "jekyll-include-cache", "~> 0.1"
-  gem 'jekyll-gzip'
-end
+    gem "jekyll", ">= 3.7", "< 5.0" if Gem.win_platform?
+    gem "jekyll-paginate", "~> 1.1" if Gem.win_platform?
+    gem "jekyll-sitemap", "~> 1.3" if Gem.win_platform?
+    gem "jekyll-gist", "~> 1.5" if Gem.win_platform?
+    gem "jekyll-feed", "~> 0.1" if Gem.win_platform?
+    gem "jekyll-include-cache", "~> 0.1" if Gem.win_platform?
+    gem 'jekyll-gzip' if Gem.win_platform?
+  end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
