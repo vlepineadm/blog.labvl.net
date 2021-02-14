@@ -2,7 +2,7 @@
 
 [![Repo on GitHub](https://img.shields.io/badge/repo-GitHub-3D76C2.svg)](https://github.com/vlepineadm/blog.labvl.net.git)
 [![version](https://img.shields.io/badge/version-0.1.0-blue)](#)
-[![Twitter](https://img.shields.io/twitter/url/https/twitter.com/cloudposse.svg?style=social&label=Follow%20%40cloudposse)](https://twitter.com/vlepineadm)
+[![Twitter](https://img.shields.io/twitter/url/https/twitter.com/cloudposse.svg?style=social&label=Follow%20%40vlepineadm)](https://twitter.com/vlepineadm)
 
 Blog de Valentin Lépine @vlepineadm.
 
