@@ -27,9 +27,7 @@ Theme: Minimal Mistakes
 
 [![Only 32 Kb](https://badge-size.herokuapp.com/Naereen/StrapDown.js/master/strapdown.min.js)](https://GitHub.com/vlepineadm/StrapDown.js/blob/master/strapdown.min.js)
 
-[![Analytics](https://ga-beacon.appspot.com/UA-135500277-2/GitHub.com/vlepineadm/badges/README.md?pixel)](https://GitHub.com/vlepineadm/badges/)
-
-[![GitHub commit activity the past week, 4 weeks](https://img.shields.io/github/commit-activity/y/eslint/eslint.svg?style=flat)]()
+[![GitHub commit activity the past week, 4 weeks](https://img.shields.io/github/commit-activity/m/eslint/eslint.svg?style=flat)]()
 
 
 

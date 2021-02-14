@@ -4,17 +4,17 @@
 
 # If you have any plugins, put them here!
 group :jekyll_plugins do
-  gem "jekyll-feed", "~> 0.6"
+  gem "jekyll-feed"
   gem 'jekyll-paginate'
   gem 'jekyll-sitemap'
   gem 'jekyll-gist'
   gem 'jemoji'
   gem 'jekyll-include-cache'
   gem 'jekyll-analytics'
-  gem 'jekyll-asciidoc', '~> 2.1.1'
-  gem "kramdown", ">= 2.3.0"
+  gem 'jekyll-asciidoc'
+  gem "kramdown"
   gem "kramdown-parser-gfm"
-  gem "nokogiri", ">= 1.11.0"
+  gem "nokogiri"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -24,4 +24,4 @@ gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "wdm", "~> 0.1.0" if Gem.win_platform?
 
 # Active support
-gem "activesupport", ">= 4.1.11"
+gem "activesupport"
