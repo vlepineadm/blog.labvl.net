@@ -25,7 +25,7 @@ Theme: Minimal Mistakes
 
 [![GitHub pull-requests](https://img.shields.io/github/issues-pr/vlepineadm/StrapDown.js.svg)](https://GitHub.com/vlepineadm/StrapDown.js/pull/)
 
-[![Only 32 Kb](https://badge-size.herokuapp.com/Naereen/StrapDown.js/master/strapdown.min.js)](https://GitHub.com/vlepineadm/StrapDown.js/blob/master/strapdown.min.js)
+[![Only 32 Kb](https://badge-size.herokuapp.com/vlepineadm/StrapDown.js/master/strapdown.min.js)](https://GitHub.com/vlepineadm/StrapDown.js/blog.labvl.net/main/strapdown.min.js)
 
 [![GitHub commit activity the past week, 4 weeks](https://img.shields.io/github/commit-activity/m/eslint/eslint.svg?style=flat)]()
 
