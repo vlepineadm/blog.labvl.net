@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "How to install a domain controller Active Directory on Windows Server"
+title:  "Comment installer un contrôleur de domaine Active Directory sur Windows Server "
 last_modified_at: 2020-12-07
 header:
   teaser: "/assets/images/posts/2019-02-22-install-active-directory/logo-ad-444x240.png"
@@ -49,120 +49,154 @@ tags:
   - Flexible Single Master Operation
 ---
 
-<p  style="text-align: justify;"><img src="{{ site.baseurl }}/assets/images/posts/2019-02-22-install-active-directory/logo-ad-222x150.png" class="align-left"><strong>Active Directory is the LDAP directory for the Windows system</strong>, it contains <strong>Objets</strong> of differents types like user, computers, organization unit (OU), servers or printers. It allows you manage the essential functions of <strong>identification</strong> and <strong>authentication</strong>. It also allows the <strong>attribution</strong> and <strong>application of strategies</strong>. Active Directory relies on the <strong>DNS</strong> protocol, without it the AD can not function. The DNS role will be installed at the same time.</p>
 
-<p style="text-align: justify;">I will starting with the basic knowledge of domain controller. In particular, the components that make up and surround it, as well as the <strong>FSMO</strong> (<i>Flexible Single Master Operation</i>) that compose it.</p>
+![image-left](/assets/images/posts/2019-02-22-install-active-directory/logo-ad-222x150.png){: .align-left}
+**Active Directory est l'annuaire LDAP pour le système Windows**, il contient des **Objets** de types différents comme des user, computers, organization unit (OU), servers ou printers. Il permet de gérer les fonctions essentielles **d'identification** et **d'authentification**. Il permet également **l'attribution** et **l'application de stratégies**. L'Active Directory s'appuie sur le protocole **DNS**, sans celui-ci l'AD ne peut pas fonctionner. Le rôle DNS sera installé durant en même temps.
+{: .text-justify}
 
-
-### Components
-<ul>
-  <li style="text-align: justify;"><strong>Forests :</strong> designates the structure of one or more domains.</li>
-  <img src="{{ site.baseurl }}/assets/images/posts/2019-02-22-install-active-directory/AD-forests.png" class="align-center">
-  <li style="text-align: justify;"><strong>Domains :</strong> a domain spanning part of a forest, ex : paris.corp.priv, corp.priv.</li>
-  <img src="{{ site.baseurl }}/assets/images/posts/2019-02-22-install-active-directory/AD-domains.png" class="align-center">
-  <li style="text-align: justify;"><strong>Sites :</strong> allows to distinguish at the level of the network topology, ex : Paris - 192.168.4.0, Londre - 192.168.5.0.</li>
-  <img src="{{ site.baseurl }}/assets/images/posts/2019-02-22-install-active-directory/AD-sites.png" class="align-center">
-  <li style="text-align: justify;"><strong>Domain Controllers :</strong> role of the server that processes the requests of a domain, it will have to manage : the identification of the objects, the authentication, to take care of the application of the group strategies.</li>
-  <img src="{{ site.baseurl }}/assets/images/posts/2019-02-22-install-active-directory/AD-domain-controllers.png" class="align-center">
-  <li style="text-align: justify;"><strong>Organizational Units :</strong> containers for creating a hierarchy.</li>
-  <img src="{{ site.baseurl }}/assets/images/posts/2019-02-22-install-active-directory/AD-organizational-units.png" class="align-center">
-</ul>
+Je vais commencer par les notions de bases d'un contrôleur de domaine. Notamment les composants qui le constituent et qui l'entourent, ainsi que les rôles **FSMO** (*Flexible Single Master Operation*) qui le composent.
+{: .text-justify}
 
 
-### FSMO Roles
-<ul>
-  <li style="text-align: justify;"><strong>Schema Master :</strong> it manages the modification of the schema and the server and its replication. <strong>Unique in a forest.</strong></li>
-  <li style="text-align: justify;"><strong>Domain Naming Master :</strong> it manages the addition and deletion of domain names in a forest. <strong>Unique in a forest.</strong></li>
-  <li style="text-align: justify;"><strong>PDC Emulator :</strong> (<i>PDC Primary Domain Controller</i>) completed 5 functions. <strong>Unique in a forest.</strong>
-    <ul>
-      <li style="text-align: justify;">Changing domain group policies.</li>
-      <li style="text-align: justify;">Synchronize clocks (date & time) on domain controllers.</li>
-      <li style="text-align: justify;">Manage account lockout.</li>
-      <li style="text-align: justify;">Manages the change of passwords.</li>
-      <li style="text-align: justify;">Ensures compatibility with Windows NT domain controllers.</li>
-    </ul>
-  </li>
-  <li style="text-align: justify;"><strong>RID Master :</strong> (<i>Relative IDentifier</i>) that allocates a relative identifier inside a domain (for a user, group, or other Active Directory managed object). It also manages the movement of an object from one domain to another, inside the forest. <strong>Unique in a forest.</strong></li>
-  <li style="text-align: justify;"><strong>Infrastructure Master :</strong> maintains references between multiple objects, such as SID (<i>Security Identifiers</i>) and GUID (<i>Globally Unique Identifier</i>). <strong>Unique in a domain.</strong></li>
-</ul>
+### Les Composants
+
+- **Forests :** désigne la structure d'un ou plusieurs domaines.
+{: .text-justify}
+![image-center](/assets/images/posts/2019-02-22-install-active-directory/AD-forests.png){: .align-center}
+- **Domains :** domaine faisant partie d'une forêt, ex : paris.corp.priv, corp.priv.
+{: .text-justify}
+![image-center](/assets/images/posts/2019-02-22-install-active-directory/AD-domains.png){: .align-center}
+- **Sites :** permet de faire la distinction au niveau de la topologie du réseau, ex : Paris: 192.168.4.0, Londre: 192.168.5.0.
+{: .text-justify}
+![image-center](/assets/images/posts/2019-02-22-install-active-directory/AD-sites.png){: .align-center}
+- **Domain Controllers :** rôle du serveur qui traite les requêtes d'un domaine, il devra gérer : l'identification des objets, l’authentification, veiller à l’application des stratégies de groupe.
+{: .text-justify}
+![image-center](/assets/images/posts/2019-02-22-install-active-directory/AD-domain-controllers.png){: .align-center}
+- **Organizational Units :** conteneurs permettant de créer une hiérarchie.
+{: .text-justify}
+![image-center](/assets/images/posts/2019-02-22-install-active-directory/AD-organizational-units.png){: .align-center}
 
 
-## Pre-requisites
-<p style="text-align: justify;">Now let's go to practice! Here are the Microsoft recommendations for the machine hosting a domain controller.</p>
+### Les Rôles FSMO
 
-| Hardware     | Specification |
+- **Schema Master :** Il gère la modification du schéma et sur le serveur et sa réplication. **Unique au sein d'une forêt.**
+- **Domain Naming Master :** Il gére la ajout et la suppression de nom de domaine dans une forêt. **Unique au sein d'une forêt.**
+- **PDC Emulator :** (*PDC Primary Domain Controller*) remplis 5 fonctions. **Unique au sein d'un domaine.**
+  - Modification des stratégies de groupe du domaine.
+  - Synchroniser les horloges (date & heure) sur les contrôleurs de domaine.
+  - Gérer le verrouillage des comptes.
+  - Gère le changement des mots de passe.
+  - Assure la compatibilité avec les contrôleurs de domaine Windows NT.
+- **RID Master :** (*Relative IDentifier*) qui alloue un identificateur relatif à l’intérieur d’un domaine (pour un utilisateur, un groupe ou tout autre objet géré par Active Directory). Il gère aussi le déplacement d’un objet d’un domaine à un autre, à l’intérieur de la forêt. **Unique au sein d'un domaine.**
+- **Infrastructure Master :** Maintients les références entre plusieurs objets, comme les SID (*Security Identifiers*) et les GUID (*Globally Unique Identifier*). **Unique au sein d'un domaine.**
+{: .text-justify}
+
+
+## Les prérequis
+Maintenant passons a la pratique ! Voici les préconisations de Microsoft pour la machine hébergeant un contrôleur de domaine.
+{: .text-justify}
+
+| Hardware     | Spécification |
 |---------     | ----------- |
 | **CPU :** | Minimum : 1.4 GHz 64-bit |
 | **Memory :** | 2Go |
-| **Hard disk :** | 32Go disk space |
-| **Network :** | A network connection |
+| **Hard disk :** | 32Go d’espace disque |
+| **Network :** | Une connexion réseau |
 
-<p style="text-align: justify;">For this tutorial, I would use a virtual machine with <strong>Windows Server 2016 Standard</strong> with the following configuration :</p>
 
 ### Hardware
 
-| Hardware     | Specification |
+Pour ce tutoriel, j'utiliserais une machine virtuel avec **Windows Server 2016 Standard** avec la configuration suivante.
+{: .text-justify}
+
+| Hardware     | Spécification |
 |---------     | ----------- |
 | **CPU :** | 2 vCPU |
 | **RAM :** | 4Go |
 | **Disque dur :** | C:\System 50Go |
-| **Réseau :** |Host-only |
+| **Réseau :** | Host-only |
 
 ### Network
 
-| Champs     | Values |
+| Champs     | Valeurs |
 |---------     | ----------- |
 | **IP address :** | 192.168.100.100 |
 | **Subnet :** | 255.255.255.0 |
 | **Default gateway :** | 192.168.100.254 |
 | **DNS :** | 192.168.100.254 |
 
-## Server preparation
-<p style="text-align: justify;">Open the <strong>"Server Manager"</strong>, the program launches at startup.</p>
-<p style="text-align: justify;">Click on <strong>"Local Server"</strong> fill in the following settings.</p>
-<img src="{{ site.baseurl }}/assets/images/posts/2019-02-22-install-active-directory/2019-02-22-23_20_21-1.png" class="align-center">
-<ul>
-  <li><strong>Computer name :</strong> give a meaningful name to your server, for my part, I would take for example : <strong>CORPWADS1</strong>.</li>
-  <li><strong>Windows Firewall :</strong> disable Windows Firewall.</li>
-  <li><strong>Remote Desktop :</strong> enable remote desktop.</li>
-  <li><strong>Ethernet0 :</strong> set a fixed IP address, I would take for example : <strong>192.168.10.1</strong></li>
-</ul>
-<p style="text-align: justify;">
-<img src="{{ site.baseurl }}/assets/images/posts/2019-02-22-install-active-directory/2019-02-22-23_25_21-1.png" class="align-center">
-</p>
-<span class="notice--warning">It is recommended by Microsot to perform all updates before any roles are installed.</span>
 
-## Installing Active Directory on Windows Server
 
-<p style="text-align: justify;">Now you have to install the <strong>"ADDS"</strong>. Open the <strong>"Server Manager"</strong>, then click <strong>"Manage"</strong> and then <strong>"Add Roles and Features"</strong>.</p>
-<img src="{{ site.baseurl }}/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-17_57_21-1.png" class="align-center">
 
-<p style="text-align: justify;"><strong>Before you begin :</strong> the page displays a small reminder of prerequisites before a role is installed. If you want this page to no longer appear, check the case <strong>"Skip this page by default"</strong> and click on <strong>"Next >"</strong>.</p>
-<img src="{{ site.baseurl }}/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-18_04_21-1.png" class="align-center">
 
-<p style="text-align: justify;"><strong>Select installation type :</strong> we want to install the role on the server in question, leave the default choice and click on <strong>"Next >"</strong>.</p>
-<img src="{{ site.baseurl }}/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-18_13_21-1.png" class="align-center">
 
-<p style="text-align: justify;"><strong>Select destination server :</strong> the default choice is automatically selects our server in the pool, click on <strong>"Next >"</strong>.</p>
-<img src="{{ site.baseurl }}/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-18_17_21-1.png" class="align-center">
+## Préparation du serveur
+Ouvrez le **"Server Manager"**, le programme se lance au démarrage.
+{: .text-justify}
+Cliquer sur **"Local Server"** remplissez les paramètres suivant.
+{: .text-justify}
+![image-center](/assets/images/posts/2019-02-22-install-active-directory/2019-02-22-23_20_21-1.png){: .align-center}
 
-<p style="text-align: justify;"><strong>Select server roles :</strong> in the list of roles, select <strong>"Active Directory Domain Services"</strong>. A window appears listing all the features, click on <strong>"Add Features"</strong>.</p>
-<img src="{{ site.baseurl }}/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-18_37_21-1.png" class="align-center">
+- **Computer name :** Donner un nom significatif à votre serveur, pour ma part, je prendrais pour exemple : **CORPWADS1**.
+- **Windows Firewall :** Désactiver le firewall de Windows.
+- **Remote Desktop :** Activer le bureau à distance.
+- **Ethernet0 :** Définissez une adresse IP fixe, je prendrais pour exemple : **192.168.100.100**.
 
-<p style="text-align: justify;"><strong>Select server roles :</strong> the role has been selected, click on <strong>"Next >"</strong>.</p>
-<img src="{{ site.baseurl }}/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-18_40_21-1.png" class="align-center">
+![image-center](/assets/images/posts/2019-02-22-install-active-directory/2019-02-22-23_25_21-1.png){: .align-center}
 
-<p style="text-align: justify;"><strong>Select features :</strong> we don't need to select additional features, click <strong>"Next >"</strong>.</p>
-<img src="{{ site.baseurl }}/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-20_52_21-1.png" class="align-center">
 
-<p style="text-align: justify;"><strong>Active Directory Domain Services :</strong> in this part it is possible to configure the link with azure Active Directory, click on <strong>"Next >"</strong>.</p>
-<img src="{{ site.baseurl }}/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-20_54_21-1.png" class="align-center">
+<i class="fas fa-exclamation-triangle"></i> **Avertissement** <br>
+Il est recommandé par Microsot d'effectuer toutes les mises à jour avant toutes installations de rôles.
+{: .notice--warning .text-justify}
 
-<p style="text-align: justify;"><strong>Confirm installation selections :</strong> the wizard lists the roles and features that will be installed, click on <strong>"Install"</strong>.</p>
-<img src="{{ site.baseurl }}/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-20_59_21-1.png" class="align-center">
 
-<p style="text-align: justify;"><strong>Installation progress :</strong> the installation is now finished. We will move to the configuration, click on <strong>"Close"</strong>.</p>
-<img src="{{ site.baseurl }}/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-21_03_21-1.png" class="align-center">
+## Installation d'Active Directory sur Windows Server
+
+Maintenant il faut installer le rôle **"ADDS"**. Ouvrez le **"Server Manager"**, puis cliquer sur **"Manage"** puis **"Add Roles and Features"**.
+{: .text-justify}
+![image-center](/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-17_57_21-1.png){: .align-center}
+
+**Before ou begin :** La page vous affiche un petit rappel des pré-requis avant l'installation d'un rôle. Si vous voulez que cette page n'apparaisse plus, cocher la casse **"Skip this page by default"** et cliquer sur **"Next >"**.
+{: .text-justify}
+![image-center](/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-18_04_21-1.png){: .align-center}
+
+**Select installation type :** Nous souhaitons installer le rôle sur le serveur en question, laisser le choix par défaut et cliquer sur **"Next >"**.
+{: .text-justify}
+![image-center](/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-18_13_21-1.png){: .align-center}
+
+**Select destination server :** Le choix par défaut sélectionne automatiquement notre serveur, cliquer sur **"Next >"**.
+{: .text-justify}
+![image-center](/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-18_17_21-1.png){: .align-center}
+
+**Select server roles :** Dans la liste des rôles, sélectionner **"Active Directory Domain Services"**. Une fenêtre apparaît listant toutes les fonctionnalités, cliquer sur **"Add Features"**.
+{: .text-justify}
+![image-center](/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-18_37_21-1.png){: .align-center}
+
+**Select server roles :** Le rôle a bien été sélectionné, cliquer sur **"Next >"**.
+{: .text-justify}
+![image-center](/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-18_40_21-1.png){: .align-center}
+
+**Select features :** Nous n'avons pas besoin de sélectionner de fonctionnalités supplémentaires, cliquer sur **"Next >"**.
+{: .text-justify}
+![image-center](/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-20_52_21-1.png){: .align-center}
+
+**Active Directory Domain Services :** Dans cette partie il est possible de configurer la liaison avec Azure Active Directory, cliquer sur **"Next >"**.
+{: .text-justify}
+![image-center](/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-20_54_21-1.png){: .align-center}
+
+**Confirm installation selections :** L'assistant nous liste les rôles et fonnalitées qui seront installés, cliquer sur **"Install"**.
+{: .text-justify}
+![image-center](/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-20_59_21-1.png){: .align-center}
+
+**Installation progress :** L'installation est maintenant finie. Nous allons passer à la configuration, cliquer sur **"Close"**.
+{: .text-justify}
+![image-center](/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-21_03_21-1.png){: .align-center}
+
+
+
+
+
+
 
 
 ## Promote Domain Controller
