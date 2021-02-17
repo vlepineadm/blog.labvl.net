@@ -79,8 +79,8 @@ Je vais commencer par les notions de bases d'un contrôleur de domaine. Notammen
 
 ### Les Rôles FSMO
 
-- **Schema Master :** Il gère la modification du schéma et sur le serveur et sa réplication. **Unique au sein d'une forêt.**
-- **Domain Naming Master :** Il gére la ajout et la suppression de nom de domaine dans une forêt. **Unique au sein d'une forêt.**
+- **Schema Master :** il gère la modification du schéma et sur le serveur et sa réplication. **Unique au sein d'une forêt.**
+- **Domain Naming Master :** il gére la ajout et la suppression de nom de domaine dans une forêt. **Unique au sein d'une forêt.**
 - **PDC Emulator :** (*PDC Primary Domain Controller*) remplis 5 fonctions. **Unique au sein d'un domaine.**
   - Modification des stratégies de groupe du domaine.
   - Synchroniser les horloges (date & heure) sur les contrôleurs de domaine.
@@ -88,7 +88,7 @@ Je vais commencer par les notions de bases d'un contrôleur de domaine. Notammen
   - Gère le changement des mots de passe.
   - Assure la compatibilité avec les contrôleurs de domaine Windows NT.
 - **RID Master :** (*Relative IDentifier*) qui alloue un identificateur relatif à l’intérieur d’un domaine (pour un utilisateur, un groupe ou tout autre objet géré par Active Directory). Il gère aussi le déplacement d’un objet d’un domaine à un autre, à l’intérieur de la forêt. **Unique au sein d'un domaine.**
-- **Infrastructure Master :** Maintients les références entre plusieurs objets, comme les SID (*Security Identifiers*) et les GUID (*Globally Unique Identifier*). **Unique au sein d'un domaine.**
+- **Infrastructure Master :** maintients les références entre plusieurs objets, comme les SID (*Security Identifiers*) et les GUID (*Globally Unique Identifier*). **Unique au sein d'un domaine.**
 {: .text-justify}
 
 
@@ -116,6 +116,7 @@ Pour ce tutoriel, j'utiliserais une machine virtuel avec **Windows Server 2016 S
 | **Disque dur :** | C:\System 50Go |
 | **Réseau :** | Host-only |
 
+
 ### Network
 
 | Champs     | Valeurs |
@@ -126,10 +127,6 @@ Pour ce tutoriel, j'utiliserais une machine virtuel avec **Windows Server 2016 S
 | **DNS :** | 192.168.100.254 |
 
 
-
-
-
-
 ## Préparation du serveur
 Ouvrez le **"Server Manager"**, le programme se lance au démarrage.
 {: .text-justify}
@@ -137,10 +134,10 @@ Cliquer sur **"Local Server"** remplissez les paramètres suivant.
 {: .text-justify}
 ![image-center](/assets/images/posts/2019-02-22-install-active-directory/2019-02-22-23_20_21-1.png){: .align-center}
 
-- **Computer name :** Donner un nom significatif à votre serveur, pour ma part, je prendrais pour exemple : **CORPWADS1**.
-- **Windows Firewall :** Désactiver le firewall de Windows.
-- **Remote Desktop :** Activer le bureau à distance.
-- **Ethernet0 :** Définissez une adresse IP fixe, je prendrais pour exemple : **192.168.100.100**.
+- **Computer name :** donner un nom significatif à votre serveur, pour ma part, je prendrais pour exemple : **CORPWADS1**.
+- **Windows Firewall :** désactiver le firewall de Windows.
+- **Remote Desktop :** activer le bureau à distance.
+- **Ethernet0 :** définissez une adresse IP fixe, je prendrais pour exemple : **192.168.100.100**.
 
 ![image-center](/assets/images/posts/2019-02-22-install-active-directory/2019-02-22-23_25_21-1.png){: .align-center}
 
@@ -156,90 +153,95 @@ Maintenant il faut installer le rôle **"ADDS"**. Ouvrez le **"Server Manager"**
 {: .text-justify}
 ![image-center](/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-17_57_21-1.png){: .align-center}
 
-**Before ou begin :** La page vous affiche un petit rappel des pré-requis avant l'installation d'un rôle. Si vous voulez que cette page n'apparaisse plus, cocher la casse **"Skip this page by default"** et cliquer sur **"Next >"**.
+**Before ou begin :** la page vous affiche un petit rappel des pré-requis avant l'installation d'un rôle. Si vous voulez que cette page n'apparaisse plus, cocher la casse **"Skip this page by default"** et cliquer sur **"Next >"**.
 {: .text-justify}
 ![image-center](/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-18_04_21-1.png){: .align-center}
 
-**Select installation type :** Nous souhaitons installer le rôle sur le serveur en question, laisser le choix par défaut et cliquer sur **"Next >"**.
+**Select installation type :** nous souhaitons installer le rôle sur le serveur en question, laisser le choix par défaut et cliquer sur **"Next >"**.
 {: .text-justify}
 ![image-center](/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-18_13_21-1.png){: .align-center}
 
-**Select destination server :** Le choix par défaut sélectionne automatiquement notre serveur, cliquer sur **"Next >"**.
+**Select destination server :** le choix par défaut sélectionne automatiquement notre serveur, cliquer sur **"Next >"**.
 {: .text-justify}
 ![image-center](/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-18_17_21-1.png){: .align-center}
 
-**Select server roles :** Dans la liste des rôles, sélectionner **"Active Directory Domain Services"**. Une fenêtre apparaît listant toutes les fonctionnalités, cliquer sur **"Add Features"**.
+**Select server roles :** dans la liste des rôles, sélectionner **"Active Directory Domain Services"**. Une fenêtre apparaît listant toutes les fonctionnalités, cliquer sur **"Add Features"**.
 {: .text-justify}
 ![image-center](/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-18_37_21-1.png){: .align-center}
 
-**Select server roles :** Le rôle a bien été sélectionné, cliquer sur **"Next >"**.
+**Select server roles :** le rôle a bien été sélectionné, cliquer sur **"Next >"**.
 {: .text-justify}
 ![image-center](/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-18_40_21-1.png){: .align-center}
 
-**Select features :** Nous n'avons pas besoin de sélectionner de fonctionnalités supplémentaires, cliquer sur **"Next >"**.
+**Select features :** nous n'avons pas besoin de sélectionner de fonctionnalités supplémentaires, cliquer sur **"Next >"**.
 {: .text-justify}
 ![image-center](/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-20_52_21-1.png){: .align-center}
 
-**Active Directory Domain Services :** Dans cette partie il est possible de configurer la liaison avec Azure Active Directory, cliquer sur **"Next >"**.
+**Active Directory Domain Services :** dans cette partie il est possible de configurer la liaison avec Azure Active Directory, cliquer sur **"Next >"**.
 {: .text-justify}
 ![image-center](/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-20_54_21-1.png){: .align-center}
 
-**Confirm installation selections :** L'assistant nous liste les rôles et fonnalitées qui seront installés, cliquer sur **"Install"**.
+**Confirm installation selections :** l'assistant nous liste les rôles et fonnalitées qui seront installés, cliquer sur **"Install"**.
 {: .text-justify}
 ![image-center](/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-20_59_21-1.png){: .align-center}
 
-**Installation progress :** L'installation est maintenant finie. Nous allons passer à la configuration, cliquer sur **"Close"**.
+**Installation progress :** l'installation est maintenant finie. Nous allons passer à la configuration, cliquer sur **"Close"**.
 {: .text-justify}
 ![image-center](/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-21_03_21-1.png){: .align-center}
 
 
+## Promulgation du contrôleur de domaine
 
+Ouvrez le **"Server Manager"**, en haut a droite cliquer sur le petit drapeau. Cliquer sur **"Promote this server to a domain controller"**.
+{: .text-justify}
+![image-center](/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-21_07_21-1.png){: .align-center}
 
+**Deployment Configuration :** etant donnée que nous n'avons pas de forêt, selectionner **"Add a new forest"**.<br/>Ensuite l'étape la plus importante le nom de domaine, voici le [lien](https://docs.microsoft.com/fr-fr/windows-server/identity/ad-ds/plan/assigning-domain-names) vers le site de Microsoft contentant les règles d'affectation. En règle générale, le nom de domaine est le nom de l'entreprise suivie de .PRIV, pour cet exemple, j'utiliserais **"CORP.PRIV"**. Cliquer sur **"Next >"**.
+{: .text-justify}
+![image-center](/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-21_14_21-1.png){: .align-center}
 
+**Domain Controller Options :** maintenant il faut régler le niveau fonctionnel de la forêt et du domaine. Pour ma part, je laisserais le niveau fonctionnel de la forêt et du domaine sur **"Windows Server 2016"**, voici le [lien](https://docs.microsoft.com/fr-fr/windows-server/identity/ad-ds/active-directory-functional-levels) vers le site de Microsoft pour comprendre ce que cela implique.
+{: .align-center}
+Dans les champs **"Password:"** et **"Cofirm password:"** avec votre mot de passe, il est conseillé d'en renseigner un différent de celui utilisé pour le compte administrator. Garder le précieusement il vous servira lors de restauration de l'Active Directory.</p>
+{: .text-justify}
+![image-center](/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-21_23_21-1.png){: .align-center}
 
+**DNS Options :** l'assistant nous demande maintenant si nous voulons créer une délégation DNS, vue qu'aucune zone DNS n'existe pour le moment l'icône est grisé. Cliquer sur **"Next >"**.
+{: .text-justify}
+![image-center](/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-21_29_21-1.png){: .align-center}
 
+**Additional Options :** le nom **"NetBIOS"** s'affiche, il correspond au nom de domaine sans l'extension. Cliquer sur **"Next >"**.
+{: .text-justify}
+![image-center](/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-21_31_21-1.png){: .align-center}
 
-## Promote Domain Controller
+**Paths :** laisser le dossier par défaut. Cliquer sur **"Next >"**.
+{: .text-justify}
+![image-center](/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-21_41_21-1.png){: .align-center}
 
-<p style="text-align: justify;">Open the <strong>"Server Manager"</strong>, at the top right click on the small flag. Click on <strong>"Promote this server to a domain controller"</strong>.</p>
-<img src="{{ site.baseurl }}/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-21_07_21-1.png" class="align-center">
+**Review Options :** on nous affiche les récapitulatifs de notre configuration. Vous avez la possibilité de cliquer sur le bouton **"View script"** pour exporter le script de configuration de l'Active Directory. Cliquer sur **"Next >"**.
+{: .text-justify}
+![image-center](/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-21_47_21-1.png){: .align-center}
 
-<p style="text-align: justify;"><strong>Deployment Configuration :</strong> given that we do not have a forest, select <strong>"Add a new forest"</strong>.<br/>Then the most important step to the domain name, here is the <a href="https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/assigning-domain-names
-$">link</a>  to the Microsoft site that content the assignment rules. Typically, the domain name is the name of the company followed by .PRIV, for this example, I would use <strong>"CORP.PRIV"</strong>. Click on <strong>"Next >"</strong>.</p>
-<img src="{{ site.baseurl }}/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-21_14_21-1.png" class="align-center">
+**Prerequisites Check :** l'assistant d'installation a fini de vérifier les pré-requis. Deux erreurs apparaissent, voici a quoi elles correspondent :
+{: .align-center}
 
-<p style="text-align: justify;"><strong>Domain Controller Options :</strong> now we have to adjust the functional level of the forest and the domain. For my part, I would leave the functional level of the forest and domain on <strong>"Windows Server 2016"</strong>, here is the <a href="https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/active-directory-functional-levels">link</a> to the Microsoft site to understand what this entails.</p>
-<p style="text-align: justify;">In the fields <strong>"Password:"</strong> and <strong>"Cofirm password:"</strong> with your password, it is advisable to fill in a different one from the one used for the administrator account. Keep it preciously it will serve you when restoring Active Directory.</p>
-<img src="{{ site.baseurl }}/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-21_23_21-1.png" class="align-center">
+> Contrôleurs de domaine qui exécutent Windows Server2008 ou version ultérieure possèdent un paramètre par défaut pour "Autoriser algorithmes de chiffrement compatibles avec Windows NT 4" qui empêche les algorithmes de chiffrement plus faibles lors de l’établissement de sessions sur canal sécurisé. Pour plus d’informations sur l’impact potentiel et une solution de contournement, voir l’article [942564](https://support.microsoft.com/kb/942564).
+{: .align-center}
 
-<p style="text-align: justify;"><strong>DNS Options :</strong> the wizard asks us now if we want to create a DNS delegation, view that no DNS zone exists at the moment the icon is dimmed. Click on <strong>"Next >"</strong>.</p>
-<img src="{{ site.baseurl }}/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-21_29_21-1.png" class="align-center">
+> La délégation DNS ne peut pas être créée ou mis à jour. Pour plus d’informations, voir [Options DNS](https://docs.microsoft.com/fr-fr/windows-server/identity/ad-ds/deploy/ad-ds-installation-and-removal-wizard-page-descriptions#BKMK_DNSOptionsPage).
+{: .align-center}
 
-<p style="text-align: justify;"><strong>Additional Options :</strong> the <strong>"NetBIOS"</strong> name appears, it matches the domain name without the extension. Click on  <strong>"Next >"</strong>.</p>
-<img src="{{ site.baseurl }}/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-21_31_21-1.png" class="align-center">
+Ses warnings ne gêne en rien l'installation. Cliquer sur **"Install"**.
+{: .text-justify}
+![image-center](/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-21_52_21-1.png){: .align-center}
 
-<p style="text-align: justify;"><strong>Paths :</strong> leave the default folder. Click on <strong>"Next >"</strong>.</p>
-<img src="{{ site.baseurl }}/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-21_41_21-1.png" class="align-center">
+Une fois l'installation finis, le serveur vas redémarrer automatiquement.
+{: .text-justify}
+![image-center](/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-21_54_21-1.png){: .align-center}
 
-<p style="text-align: justify;"><strong>Review Options :</strong> we are shown the summary of our configuration. You can click on <strong>"View script"</strong> button to export the Active Directory configuration script. Click on <strong>"Next >"</strong>.</p>
-<img src="{{ site.baseurl }}/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-21_47_21-1.png" class="align-center">
+Une fois le redémarrage effectué, le domaine **"CORP"** apparaît devant le login utilisateur **"Administrator"**.
+{: .text-justify}
+![image-center](/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-22_03_21-1.png){: .align-center}
 
-<p style="text-align: justify;"><strong>Prerequisites Check :</strong> the installation wizard has finished checking the prerequisites. Two errors appear, here is what they correspond to :</p>
-<p style="text-align: justify;">
-  <blockquote style="text-align: justify;">Domain controllers that run Windows Server 2008 or later have a default setting for "Allow cryptography algorithms compatible with Windows NT 4" that prevents weaker cryptography algorithms when establishing secure channel sessions. For more information about the potential impact and a workaround, see KB article <a href="https://support.microsoft.com/en-us/help/942564/the-net-logon-service-on-windows-server-2008-and-newer-domain-controll">942564</a>.</blockquote>
-</p>
-
-<p style="text-align: justify;">
-  <blockquote style="text-align: justify;">DNS delegation could not be created or updated. For more information, see <a href="https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/manage/ad-ds-simplified-administration#BKMK_ADDSInstallPrerequisiteTests">DNS Options</a>.</blockquote>
-</p>
-
-<p style="text-align: justify;">Its warnings do not interfere with the installation. Click on <strong>"Install"</strong>.</p>
-<img src="{{ site.baseurl }}/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-21_52_21-1.png" class="align-center">
-
-<p style="text-align: justify;">Once the installation is finished, the server will restart automatically.</p>
-<img src="{{ site.baseurl }}/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-21_54_21-1.png" class="align-center">
-
-<p style="text-align: justify;">Once the restart has been completed, the domain <strong>"CORP"</strong> appears in front of the user login <strong>"Administrator"</strong>.</p>
-<img src="{{ site.baseurl }}/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-22_03_21-1.png" class="align-center">
-
-<p style="text-align: justify;">There you go ! We now have an Active Directory domain. You can add new machines and users to your domain.</p>
+Et voilà ! Nous avons maintenant un domaine Active Directory. Vous pouvez ajouter de nouvelles machines à votre domaine.
+{: .text-justify}

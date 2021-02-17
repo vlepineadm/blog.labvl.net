@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "How to install a DHCP server on Windows Server"
+title:  "Comment installer un serveur DHCP sur Windows Server"
 last_modified_at: 2020-12-07
 header:
   teaser: "/assets/images/posts/2019-03-11-install-dhcp-server/logo-dhcp-444x240.png"
@@ -44,7 +44,10 @@ tags:
   - Router
 ---
 
-<p style="text-align: justify;"><img src="{{ site.baseurl }}/assets/images/posts/2019-03-11-install-dhcp-server/logo-dhcp-222x150.png" class="align-left"><strong>Dynamic Host Configuration Protocol (DHCP)</strong>  is a network protocol that enables automatic configuration of client IP settings by automatically distributing an <strong>IP address</strong> and <strong>subnet mask</strong>. It can also configure the <strong>gateway</strong>, <strong>DNS</strong> servers and <strong>WINS</strong> servers. DHCP messages are transmitted through the <strong>UDP</strong> protocol, the client uses <strong>port 68</strong> to emit and receive messages. The server uses <strong>port 67</strong> to send and receive messages.</p>
+![image-left](/assets/images/posts/2019-03-11-install-dhcp-server/logo-dhcp-222x150.png){: .align-left}
+**Dynamic Host Configuration Protocol (DHCP)** est un protocole réseau qui permet la configuration automatique des paramètres IP de clients, en leur distribuant automatiquement une **IP address** et **subnet mask**. Il peut également configurer la **gateway**, les serveurs **DNS** et des serveurs **WINS**. Les messages DHCP sont transmis via le protocole **UDP**, le client utilise le **port 68** pour émettre et recevoir les messages. Le serveur lui utilise le **port 67** pour envoyer et recevoir les messages.
+{: .text-justify}
+
 
 ## How it works
 
