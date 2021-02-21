@@ -48,6 +48,7 @@ tags:
 **Dynamic Host Configuration Protocol (DHCP)** est un protocole réseau qui permet la configuration automatique des paramètres IP de clients, en leur distribuant automatiquement une **IP address** et **subnet mask**. Il peut également configurer la **gateway**, les serveurs **DNS** et des serveurs **WINS**. Les messages DHCP sont transmis via le protocole **UDP**, le client utilise le **port 68** pour émettre et recevoir les messages. Le serveur lui utilise le **port 67** pour envoyer et recevoir les messages.
 {: .text-justify}
 
+{% include toc icon="align-left" title="Table des matières" %}
 
 ## Le fonctionnement
 Voici un schéma qui explique les échanges entre un client et un serveur pour obtenir les paramètres IP :
@@ -72,14 +73,6 @@ Voici les prérequis minimum pour un serveur hébergent le rôle DHCP.
 | **RAM :** | 2048Mo (512Mo pour la version core) |
 | **Disque dur :** | 32Go d’espace disque |
 | **Réseau :** | Une connexion réseau |
-
-
-
-
-
-
-
-
 
 
 ## Installation du rôle DHCP

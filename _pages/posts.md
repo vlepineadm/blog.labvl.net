@@ -3,6 +3,7 @@ layout: category
 title: "Tous les articles"
 permalink: /posts/
 author_profile: true
+show_date: true
 ---
 
 <div class="list__item">

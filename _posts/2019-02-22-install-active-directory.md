@@ -57,8 +57,9 @@ tags:
 Je vais commencer par les notions de bases d'un contrôleur de domaine. Notamment les composants qui le constituent et qui l'entourent, ainsi que les rôles **FSMO** (*Flexible Single Master Operation*) qui le composent.
 {: .text-justify}
 
+{% include toc icon="align-left" title="Table des matières" %}
 
-### Les Composants
+### 1 Les Composants
 
 - **Forests :** désigne la structure d'un ou plusieurs domaines.
 {: .text-justify}
@@ -77,7 +78,7 @@ Je vais commencer par les notions de bases d'un contrôleur de domaine. Notammen
 ![image-center](/assets/images/posts/2019-02-22-install-active-directory/AD-organizational-units.png){: .align-center}
 
 
-### Les Rôles FSMO
+### 2 Les Rôles FSMO
 
 - **Schema Master :** il gère la modification du schéma et sur le serveur et sa réplication. **Unique au sein d'une forêt.**
 - **Domain Naming Master :** il gére la ajout et la suppression de nom de domaine dans une forêt. **Unique au sein d'une forêt.**
@@ -92,7 +93,7 @@ Je vais commencer par les notions de bases d'un contrôleur de domaine. Notammen
 {: .text-justify}
 
 
-## Les prérequis
+## 3 Les prérequis
 Maintenant passons a la pratique ! Voici les préconisations de Microsoft pour la machine hébergeant un contrôleur de domaine.
 {: .text-justify}
 
@@ -104,7 +105,7 @@ Maintenant passons a la pratique ! Voici les préconisations de Microsoft pour l
 | **Network :** | Une connexion réseau |
 
 
-### Hardware
+### 3.1 Hardware
 
 Pour ce tutoriel, j'utiliserais une machine virtuel avec **Windows Server 2016 Standard** avec la configuration suivante.
 {: .text-justify}
@@ -117,7 +118,7 @@ Pour ce tutoriel, j'utiliserais une machine virtuel avec **Windows Server 2016 S
 | **Réseau :** | Host-only |
 
 
-### Network
+### 3.2 Network
 
 | Champs     | Valeurs |
 |---------     | ----------- |
@@ -127,7 +128,7 @@ Pour ce tutoriel, j'utiliserais une machine virtuel avec **Windows Server 2016 S
 | **DNS :** | 192.168.100.254 |
 
 
-## Préparation du serveur
+## 4 Préparation du serveur
 Ouvrez le **"Server Manager"**, le programme se lance au démarrage.
 {: .text-justify}
 Cliquer sur **"Local Server"** remplissez les paramètres suivant.
@@ -147,7 +148,7 @@ Il est recommandé par Microsot d'effectuer toutes les mises à jour avant toute
 {: .notice--warning .text-justify}
 
 
-## Installation d'Active Directory sur Windows Server
+## 5 Installation d'Active Directory sur Windows Server
 
 Maintenant il faut installer le rôle **"ADDS"**. Ouvrez le **"Server Manager"**, puis cliquer sur **"Manage"** puis **"Add Roles and Features"**.
 {: .text-justify}
@@ -190,7 +191,7 @@ Maintenant il faut installer le rôle **"ADDS"**. Ouvrez le **"Server Manager"**
 ![image-center](/assets/images/posts/2019-02-22-install-active-directory/2019-02-23-21_03_21-1.png){: .align-center}
 
 
-## Promulgation du contrôleur de domaine
+## 6 Promulgation du contrôleur de domaine
 
 Ouvrez le **"Server Manager"**, en haut a droite cliquer sur le petit drapeau. Cliquer sur **"Promote this server to a domain controller"**.
 {: .text-justify}
@@ -225,11 +226,12 @@ Dans les champs **"Password:"** et **"Cofirm password:"** avec votre mot de pass
 **Prerequisites Check :** l'assistant d'installation a fini de vérifier les pré-requis. Deux erreurs apparaissent, voici a quoi elles correspondent :
 {: .align-center}
 
-> Contrôleurs de domaine qui exécutent Windows Server2008 ou version ultérieure possèdent un paramètre par défaut pour "Autoriser algorithmes de chiffrement compatibles avec Windows NT 4" qui empêche les algorithmes de chiffrement plus faibles lors de l’établissement de sessions sur canal sécurisé. Pour plus d’informations sur l’impact potentiel et une solution de contournement, voir l’article [942564](https://support.microsoft.com/kb/942564).
+> Domain controllers that run Windows Server 2008 or later have a default setting for "Allow cryptography algorithms compatible with Windows NT 4" that prevents weaker cryptography algorithms when establishing secure channel sessions. For more information about the potential impact and a workaround, see KB article [942564](https://support.microsoft.com/en-us/help/942564/the-net-logon-service-on-windows-server-2008-and-newer-domain-controll).
 {: .align-center}
 
-> La délégation DNS ne peut pas être créée ou mis à jour. Pour plus d’informations, voir [Options DNS](https://docs.microsoft.com/fr-fr/windows-server/identity/ad-ds/deploy/ad-ds-installation-and-removal-wizard-page-descriptions#BKMK_DNSOptionsPage).
-{: .align-center}
+> DNS delegation could not be created or updated. For more information, see [DNS Options](https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/manage/ad-ds-simplified-administration#BKMK_ADDSInstallPrerequisiteTests)".
+
+
 
 Ses warnings ne gêne en rien l'installation. Cliquer sur **"Install"**.
 {: .text-justify}
