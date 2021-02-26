@@ -13,4 +13,5 @@ Blog de Valentin Lépine. [![Twitter](https://img.shields.io/twitter/url/https/t
 [![GitHub commit activity the past week, 4 weeks](https://img.shields.io/github/commit-activity/y/eslint/eslint.svg?style=flat)]()
 
 Web Hosting : Azure
-Theme: Minimal Mistakes
+Theme: Minimal Mistakes 4.22.0
+Jekyll : v4.2.0

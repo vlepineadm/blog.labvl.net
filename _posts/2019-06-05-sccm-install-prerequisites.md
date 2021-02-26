@@ -3,8 +3,8 @@ layout: single
 title:  "Comment installer les prérequis pour System Center Configuration Manager"
 last_modified_at: 2020-12-07
 header:
-  teaser: "/assets/images/posts/posts/2019-06-05-sccm-install-prerequisites/logo-sccm-444x240.png"
-  og_image: "/assets/images/posts/posts/2019-06-05-sccm-install-prerequisites/logo-sccm-444x240.png"
+  teaser: "/assets/images/posts/2019-06-05-sccm-install-prerequisites/logo-sccm-444x240.png"
+  og_image: "/assets/images/posts/2019-06-05-sccm-install-prerequisites/logo-sccm-444x240.png"
 type: posts
 classes: wide
 comments: true
