@@ -15,15 +15,16 @@ collections:
       - {label: "Layout", name: "layout", widget: "hidden", default: "post"}
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Body", name: "body", widget: "markdown"}
-  - name: 'pages'
-    label: 'Pages'
+  - name: "pages"
+    label: "Pages"
+    folder: "_pages" # The path to the folder where the documents are stored
     editor:
       preview: false
     files:
-      - label: 'About Page'
-        name: 'about'
-        file: 'about.md'
+      - label: "About Page"
+        name: "about"
+        file: "about.md"
         fields:
-        - { label: 'Title', name: 'title', widget: 'hidden', default: 'about' }
-        - { label: 'Layout', name: 'title', widget: 'hidden', default: 'about' }
-        - { label: 'Body', name: 'body', widget: 'markdown' }
+        - { label: "Title", name: "title", widget: "hidden", default: "about" }
+        - { label: "Layout", name: "title", widget: "hidden", default: "about" }
+        - { label: "Body", name: "body", widget: "markdown" }
