@@ -1,16 +1,6 @@
 <!-- start custom head snippets -->
-
+<link rel="preconnect" href="https://blog.labvl.net/" />
+<link rel="dns-prefetch" href="https://blog.labvl.net/" />
 <!-- insert favicons. use https://realfavicongenerator.net/ -->
-const po = new PerformanceObserver(list => {
-    const entries = list.getEntries();
-    const entry = entries[entries.length - 1];
-    // Process entry as the latest LCP candidate
-    // LCP is accurate when the renderTime is available.
-    // Try to avoid this being false by adding Timing-Allow-Origin headers!
-    const accurateLCP = entry.renderTime ? true : false;
-    // Use startTime as the LCP timestamp. It will be renderTime if available, or loadTime otherwise.
-    const largestPaintTime = entry.startTime;
-    // Send the LCP information for processing.
-});
-po.observe({type: 'largest-contentful-paint', buffered: true});
+
 <!-- end custom head snippets -->
