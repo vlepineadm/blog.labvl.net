@@ -2,7 +2,7 @@ backend:
   name: github
   repo: vlepineadm/blog.labvl.net
   branch: main # Branch to update (master by default)
-  site_domain: blog.fr.labvl.net
+  #site_domain: blog.fr.labvl.net
 
 media_folder: "assets/images"
 collections:
