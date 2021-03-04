@@ -4,10 +4,9 @@ backend:
   branch: main # Branch to update (master by default)
   site_domain: blog.fr.labvl.net
   publish_mode: editorial_workflow
-  locale : "fr"
 
 media_folder: "assets/images"
-public_folder: "/images"
+public_folder: "assets/images/posts"
 
 collections:
   - name: "posts" # Used in routes, e.g. /admin/collections/blog
