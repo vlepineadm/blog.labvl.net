@@ -1,5 +1,7 @@
 # LABVL Blog : blog.labvl.net
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/3057b214-7de3-4084-b7a4-ded5a8bee789/deploy-status)](https://app.netlify.com/sites/trusting-snyder-c2ef6e/deploys)
+
 [![Repo on GitHub](https://img.shields.io/badge/repo-GitHub-3D76C2.svg)](https://github.com/vlepineadm/blog.labvl.net.git)
 [![version](https://img.shields.io/badge/version-0.1.0-blue)](#)
 [![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
